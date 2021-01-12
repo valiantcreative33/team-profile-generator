@@ -1,4 +1,6 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
+const generatePage = require('./src/page-template.js')
 
 const questions = [
     {
@@ -114,8 +116,35 @@ const questions = [
     }
 ];
 
-const promptUser = () => {
-    return inquirer.prompt(questions);
+const promptUser = (employeeData) => {
+
+    // creates array for all employee data
+    if (!employeeData) {
+        employeeData = [];
+    }
+
+    return inquirer.prompt(questions)
+    .then(userResponse => {
+
+        // adds to employee data array
+        employeeData.push(userResponse);
+
+        // adds another employee based on user selection
+        if (userResponse.addEmployee) {
+            return promptUser(employeeData);
+        } else {
+            return employeeData;
+        };
+    });
+};
+
+const writePage = (htmlContent) => {
+    fs.writeFile('./dist/index.html', htmlContent, err => {
+        if (err) {
+            throw err
+        };
+        console.log('Page created successfully!');
+    });
 };
 
 console.log(`
@@ -123,3 +152,6 @@ Welcome to the Team Profile Generator! Let's add some employees!
 `);
 
 promptUser()
+    .then(data => generatePage(data))
+    .then(generatedHtml => writePage(generatedHtml))
+    .catch(err => console.log(err));

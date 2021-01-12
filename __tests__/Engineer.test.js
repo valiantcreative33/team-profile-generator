@@ -1,31 +1,29 @@
 const Engineer = require('../lib/Engineer');
+const { expectToBe, expectStr, expectNum } = require('../utils/expect');
 
-const engineer = new Engineer('Peter', 1, 'petercodes');
+const engineer = new Engineer('John', 'Doe', 1, 'jamescodes');
 
 test('creates an engineer object', () => {
-
-    expect(engineer.name).toBe('Peter');
-    expect(engineer.id).toEqual(expect.any(Number));
-    expect(engineer.email).toEqual(expect.stringContaining('@'));
-    expect(engineer.role).toEqual('Engineer');
+    expectToBe(engineer.firstName, 'John');
+    expectToBe(engineer.lastName, 'Doe');
+    expectNum(engineer.id);
+    expectStr(engineer.email, '@');
+    expectToBe(engineer.role, 'Engineer');
 });
 
 test('gets engineer\'s name', () => {
-    expect(engineer.getName()).toEqual(expect.stringContaining(engineer.name));
+    expectStr(engineer.getName(), `${engineer.firstName} ${engineer.lastName}`);
 });
 
 test('gets engineer\'s ID', () => {
-    expect(engineer.getId()).toEqual(expect.stringContaining(`${engineer.id}`));
+    expectStr(engineer.getId(), `${engineer.id}`);
 });
-
 test('gets engineer\'s email', () => {
-    expect(engineer.getEmail()).toEqual(expect.stringContaining(engineer.email));
+    expectStr(engineer.getEmail(), engineer.email);
 });
-
 test('gets engineer\'s role', () => {
-    expect(engineer.getRole()).toEqual(expect.stringContaining(engineer.role));
+    expectStr(engineer.getRole(), engineer.role);
 });
-
 test('gets engineer\'s github', () => {
-    expect(engineer.getGithub()).toEqual(expect.stringContaining(engineer.github));
+    expectStr(engineer.getGithub(), engineer.github);
 });

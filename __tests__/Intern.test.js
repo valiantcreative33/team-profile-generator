@@ -1,32 +1,30 @@
 const Intern = require('../lib/Intern')
+const { expectToBe, expectStr, expectNum } = require('../utils/expect');
 
-const intern = new Intern('Peter', 1, 'UCF');
+const intern = new Intern('John', 'Doe', 1, 'UCF');
 
 test('creates an intern object', () => {
-
-    expect(intern.name).toBe('Peter');
-    expect(intern.id).toEqual(expect.any(Number));
-    expect(intern.email).toEqual(expect.stringContaining('@'));
-    expect(intern.role).toEqual('Intern');
-    expect(intern.school).toEqual('UCF');
+    expectToBe(intern.firstName, 'John');
+    expectToBe(intern.lastName, 'Doe');
+    expectNum(intern.id);
+    expectStr(intern.email, '@');
+    expectToBe(intern.role, 'Intern');
+    expectToBe(intern.school, 'UCF');
 });
 
 test('gets intern\'s name', () => {
-    expect(intern.getName()).toEqual(expect.stringContaining(intern.name));
+    expectStr(intern.getName(), `${intern.firstName} ${intern.lastName}`);
 });
 
 test('gets intern\'s ID', () => {
-    expect(intern.getId()).toEqual(expect.stringContaining(`${intern.id}`));
+    expectStr(intern.getId(), `${intern.id}`);
 });
-
 test('gets intern\'s email', () => {
-    expect(intern.getEmail()).toEqual(expect.stringContaining(intern.email));
+    expectStr(intern.getEmail(), intern.email);
 });
-
 test('gets intern\'s role', () => {
-    expect(intern.getRole()).toEqual(expect.stringContaining(intern.role));
+    expectStr(intern.getRole(), intern.role);
 });
-
 test('gets intern\'s school', () => {
-    expect(intern.getSchool()).toEqual(expect.stringContaining(intern.school));
+    expectStr(intern.getSchool(), intern.school);
 });

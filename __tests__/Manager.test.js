@@ -1,32 +1,30 @@
 const Manager = require ('../lib/Manager');
+const { expectToBe, expectStr, expectNum } = require('../utils/expect');
 
-const manager = new Manager('Peter', 1, 7777777777);
+const manager = new Manager('John', 'Doe', 1, 1);
 
 test('creates a manager object', () => {
-
-    expect(manager.name).toBe('Peter');
-    expect(manager.id).toEqual(expect.any(Number));
-    expect(manager.email).toEqual(expect.stringContaining('@'));
-    expect(manager.role).toEqual('Manager');
-    expect(manager.officeNumber).toEqual(expect.any(Number));
+    expectToBe(manager.firstName,'John');
+    expectToBe(manager.lastName, 'Doe');
+    expectNum(manager.id);
+    expectStr(manager.email, '@');
+    expectToBe(manager.role, 'Manager');
+    expectNum(manager.officeNumber);
 });
 
 test('gets manager\'s name', () => {
-    expect(manager.getName()).toEqual(expect.stringContaining(manager.name));
+    expectStr(manager.getName(), `${manager.firstName} ${manager.lastName}`);
 });
 
 test('gets manager\'s ID', () => {
-    expect(manager.getId()).toEqual(expect.stringContaining(`${manager.id}`));
+    expectStr(manager.getId(), `${manager.id}`);
 });
-
 test('gets manager\'s email', () => {
-    expect(manager.getEmail()).toEqual(expect.stringContaining(manager.email));
+    expectStr(manager.getEmail(), manager.email);
 });
-
 test('gets manager\'s role', () => {
-    expect(manager.getRole()).toEqual(expect.stringContaining(manager.role));
+    expectStr(manager.getRole(), manager.role);
 });
-
 test('gets manager\'s office number', () => {
-    expect(manager.getOfficeNumber()).toEqual(expect.stringContaining(`${manager.officeNumber}`));
+    expectStr(manager.getOfficeNumber(), `${manager.officeNumber}`);
 });
