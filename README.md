@@ -43,7 +43,7 @@ npm install jest
 and run `npm run test` from the command line.
     
 ## Questions
-If you have any questions about the repo, please [open an issue](https://github.com/valiantcreative33/team-profile-generator/issues) or contact me via email at rubne@valiantcreative.net. You can find more of my work on my GitHub, [valiantcreative33](https://github.com/valiantcreative33/).
+If you have any questions about the repo, please [open an issue](https://github.com/valiantcreative33/team-profile-generator/issues) or contact me via email at ruben@valiantcreative.net. You can find more of my work on my GitHub, [valiantcreative33](https://github.com/valiantcreative33/).
     
 ## Credits
 * Styles for the generated page powered by [Bulma](https://bulma.io/).
