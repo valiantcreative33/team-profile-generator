@@ -1,5 +1,5 @@
 # Team Profile Generator
-[![Issues](https://img.shields.io/github/issues/valiantcreative33/team-profile-generator)](https://github.com/valiantcreative33/team-profile-generator/issues) [![Issues](https://img.shields.io/github/contributors/deckiedevs/team-profile-generator)](https://github.com/valiantcreative33/team-profile-generator/graphs/contributors) 
+[![Issues](https://img.shields.io/github/issues/valiantcreative33/team-profile-generator)](https://github.com/valiantcreative33/team-profile-generator/issues) [![Issues](https://img.shields.io/github/contributors/valiantcreative33/team-profile-generator)](https://github.com/valiantcreative33/team-profile-generator/graphs/contributors) 
 
 ## Description
 A Node.js application to create a simple webpage featuring your software engineer team's roster.
